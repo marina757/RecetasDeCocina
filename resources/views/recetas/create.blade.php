@@ -9,6 +9,7 @@
 
 <h2 class="text-center mb-5">Crear Nueva receta</h2>
 
+
 <div class="row justify-content-center mt-5">
     <div class="col-md-8">
         <form method="POST" action="{{ route('recetas.store')}}" novalidate>
@@ -30,6 +31,20 @@
                 </span>
             @enderror
 
+            <div class="from-group">
+                <label for="categoria">Categoria</label>
+
+                <select
+                   name="categoria"
+                   class="form-control"
+                   id="categoria">
+
+                   @foreach($categorias as $id => $categoria)
+                      <option value="{{ $id }}">{{$categoria}}</option> 
+                   @endforeach
+                    
+                </select>
+            </div>
             <div class="form-group">
             <input type="submit" class="btn btn-primary"
             value="Agregar Receta">
