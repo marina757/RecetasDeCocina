@@ -36,15 +36,25 @@
 
                 <select
                    name="categoria"
-                   class="form-control"
+                   class="form-control @error('categoria') is-invalid @enderror"
                    id="categoria">
 
+                   <option value="">-- Seleccione --</option>
                    @foreach($categorias as $id => $categoria)
-                      <option value="{{ $id }}">{{$categoria}}</option> 
-                   @endforeach
-                    
+                      <option 
+                           value="{{ $id }}" 
+                           {{ old('categoria') == $id ? 'selected' : ''}}
+                           >{{$categoria}}</option> 
+                   @endforeach                    
                 </select>
+
+                @error('categoria')
+                  <span class="invalid-feedback d-block" role="alert">
+                    <strong>{{$message}}</strong>
+                  </span>
+                @enderror
             </div>
+
             <div class="form-group">
             <input type="submit" class="btn btn-primary"
             value="Agregar Receta">
