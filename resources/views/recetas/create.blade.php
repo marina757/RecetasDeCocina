@@ -48,12 +48,19 @@
                    id="categoria">
 
                    <option value="">-- Seleccione --</option>
-                   @foreach($categorias as $id => $categoria)
+                   {{--MODO DE HACERLO CUANDO OBTENIAMOS CATEGORIAS SIN MODELO
+                     @foreach($categorias as $id => $categoria)
                       <option 
                            value="{{ $id }}" 
                            {{ old('categoria') == $id ? 'selected' : ''}}
                            >{{$categoria}}</option> 
-                   @endforeach                    
+                   @endforeach                     --}}
+                   @foreach($categorias as $categoria)
+                      <option 
+                           value="{{ $categoria->id }}" 
+                           {{ old('categoria') == $categoria->id ? 'selected' : ''}}
+                           >{{$categoria->nombre}}</option> 
+                   @endforeach
                 </select>
 
                 @error('categoria')
