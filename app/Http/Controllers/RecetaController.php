@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Receta;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
 
 class RecetaController extends Controller
 {
@@ -61,6 +62,10 @@ class RecetaController extends Controller
 
         //OBTENER LA RUTA DE LA IMAGEN
         $ruta_imagen = $request['imagen']->store('upload-recetas', 'public');
+
+        //RESIZE DE LA IMAGEN
+        $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(1000, 550);
+        $img->save();
 
         //ALMACENAR EN BD SIN MODELO
         DB::table('recetas')->insert([
