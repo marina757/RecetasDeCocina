@@ -22,7 +22,12 @@ class RecetaController extends Controller
      */
     public function index()
     {
-       return view('recetas.index');
+        // auth()->user()->recetas->dd(); 1° FORMA
+        // Auth::user()->recetas->dd(); 2° FORMA
+       
+        $recetas = auth()->user()->recetas;
+
+       return view('recetas.index')->with('recetas', $recetas);
     }
 
     /**
