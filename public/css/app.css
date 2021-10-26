@@ -10948,6 +10948,10 @@ body {
   font-family: "Didact Gothic", sans-serif;
 }
 
+trix-editor {
+  min-height: 400px;
+}
+
 .bg-primary .navbar-brand {
   color: white;
   font-family: "Fredoka One", cursive;

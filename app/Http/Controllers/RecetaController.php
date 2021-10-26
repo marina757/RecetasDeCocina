@@ -49,7 +49,9 @@ class RecetaController extends Controller
 
         $data = $request->validate([
             'titulo' => 'required|min:6',
-            'categoria' => 'required'
+            'categoria' => 'required',
+            'preparacion' => 'required',
+            'ingredientes' => 'required'
         ]);
         DB::table('recetas')->insert([
             'titulo' =>$data['titulo']
