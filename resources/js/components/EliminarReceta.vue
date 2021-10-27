@@ -26,16 +26,27 @@ export default {
             confirmButtonText: 'Si!',
             cancelButtonText: 'No'
            }).then((result) => {
-              if (result.isConfirmed) {
+              if (result.value) {
+                  const params = {
+                      id: this.recetaId
+                  }
 
                   //ENVIAR LA PETICION AL SERVIDOR
-              this.$swal({
-                  title: 'Receta eliminada',
-                  text: 'se elimino la receta',
-                  icon: 'success'
+                  axios.post(`/recetas/${this.recetaId}`, {params, _method: 'delete'})
+                        .then(respuesta => {
+                            this.$swal({
+                                title: 'Receta eliminada',
+                                text: 'se elimino la receta',
+                                icon: 'success'  
+                           });
 
-
-              })
+                           //ELIMINAR RECETA DEL DOM
+                           this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+                        })
+                        .catch(error => {
+                            console.log(error)
+                        })
+              
           }
         })
       }
