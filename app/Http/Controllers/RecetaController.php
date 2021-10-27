@@ -138,7 +138,7 @@ class RecetaController extends Controller
      */
     public function update(Request $request, Receta $receta)
     {
-        //
+       return "editando";
     }
 
     /**
