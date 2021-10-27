@@ -15,9 +15,31 @@ export default {
     // },
     methods: {
         eliminarReceta() {
-            console.log('diste click', this.recetaId);
-        }
-    },
+            // console.log('diste click', this.recetaId);
+            this.$swal({
+            title: '¿Deseas eliminar esta receta?',
+            text: "Una vez eliminada no se puede recuperar",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si!',
+            cancelButtonText: 'No'
+           }).then((result) => {
+              if (result.isConfirmed) {
+
+                  //ENVIAR LA PETICION AL SERVIDOR
+              this.$swal({
+                  title: 'Receta eliminada',
+                  text: 'se elimino la receta',
+                  icon: 'success'
+
+
+              })
+          }
+        })
+      }
+    }
     
 }
 </script>
