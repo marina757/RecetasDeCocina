@@ -126,7 +126,7 @@ class RecetaController extends Controller
         //OBTENER CATEGORIAS CON MODELO
         $categorias = CategoriaReceta::all(['id', 'nombre']);
 
-        return view('recetas.edit', compact('categorias'));
+        return view('recetas.edit', compact('categorias', 'receta'));
     }
 
     /**
