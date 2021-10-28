@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Perfil;
 use Illuminate\Http\Request;
+use Intervention\Image\Facades\Image;
 
 class PerfilController extends Controller
 {
@@ -71,6 +72,8 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
+        // dd( $request['imagen'] );
+
 
         //VALIDAR
         $data = request()->validate( [
@@ -79,8 +82,28 @@ class PerfilController extends Controller
             'biografia' => 'required'
 
         ]);
+
         //SI USUARIO SUBE IMAGEN
-       
+    //    if ( $request['imagen']) {
+    //        return "Si se subio una imagen";
+    //    } else {
+    //        return "no se subio";
+    //    }
+
+        if ( $request['imagen']) {
+            //OBTENER LA RUTA DE LA IMAGEN
+            $ruta_imagen = $request['imagen']->store('upload-perfiles', 'public');
+
+            //RESIZE DE LA IMAGEN
+            $img = Image::make( public_path("storage/{$ruta_imagen}"))->fit(600, 600);
+            $img->save();
+
+            //CREAR UN ARREGLO DE IMAGEN
+            $array_imagen = ['imagen' => $ruta_imagen];
+         }
+
+
+
         //ASIGNAR NOMBRE Y URL
         auth()->user()->url = $data['url'];
         auth()->user()->name = $data['nombre'];
@@ -92,13 +115,14 @@ class PerfilController extends Controller
          //GUARDAR INFO
 
         //ASIGNAR BIOGRAFIA E IMAGEN
-        auth()->user()->perfil()->update(
-            $data
+        auth()->user()->perfil()->update( array_merge(
 
-        );
+            $data,
+            $array_imagen ?? []
+        ) );
        
         //REDIRECCIONAR
-        return "actualizando perfil";
+        return redirect()->action('RecetaController@index');
     }
 
     /**
