@@ -35,14 +35,14 @@
                 id="titulo"
                 placeholder="Titulo Receta"
                 value="{{ $receta->titulo}}">
-            </div>
+            
 
             @error('titulo')
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>
             @enderror
-
+            </div>
             <div class="from-group">
                 <label for="categoria">Categoria</label>
 
