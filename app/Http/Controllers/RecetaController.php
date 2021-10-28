@@ -25,10 +25,12 @@ class RecetaController extends Controller
     {
         // auth()->user()->recetas->dd(); 1° FORMA
         // Auth::user()->recetas->dd(); 2° FORMA
-       
+        // $usuario = auth()->user();
         $recetas = auth()->user()->recetas;
 
-       return view('recetas.index')->with('recetas', $recetas);
+       return view('recetas.index')
+       ->with('recetas', $recetas);
+     
     }
 
     /**
