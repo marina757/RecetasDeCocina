@@ -37,6 +37,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //EVENTO QUE SE EJECUTA CUANDO UN USUARIO ES CREADO
+    protected static function boot()
+    {
+        parent::boot();
+
+        //ASIGNAR PERFIL UNA VEZ SE HAYA CREADO UN USUARIO NUEVO
+        static::created(function ($user) {
+            $user->perfil()->create();
+
+        });
+    }
+
     //RELACION 1:n DE USUARIO A RECETAS
     public function recetas()
     {
