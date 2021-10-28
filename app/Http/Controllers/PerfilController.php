@@ -80,7 +80,23 @@ class PerfilController extends Controller
 
         ]);
         //SI USUARIO SUBE IMAGEN
-        //GUARDAR INFO
+       
+        //ASIGNAR NOMBRE Y URL
+        auth()->user()->url = $data['url'];
+        auth()->user()->name = $data['nombre'];
+        auth()->user()->save();
+
+        //ELIMINAR URL Y NAME DE $DATA
+        unset($data['url']);
+        unset($data['nombre']);
+         //GUARDAR INFO
+
+        //ASIGNAR BIOGRAFIA E IMAGEN
+        auth()->user()->perfil()->update(
+            $data
+
+        );
+       
         //REDIRECCIONAR
         return "actualizando perfil";
     }
