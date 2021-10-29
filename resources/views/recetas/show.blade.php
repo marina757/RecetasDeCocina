@@ -47,6 +47,8 @@
 
         {!! $receta->preparacion !!}{{-- IMPRIME CODIGO HTML--}}
     </div>
+
+    <like-button></like-button>
   </div>
 </article>
 @endsection
