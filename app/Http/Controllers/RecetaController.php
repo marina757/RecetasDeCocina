@@ -125,6 +125,9 @@ class RecetaController extends Controller
      */
     public function edit(Receta $receta)
     {
+        //REVISAR EL POLICY
+        $this->authorize('view', $receta);
+
         //OBTENER CATEGORIAS CON MODELO
         $categorias = CategoriaReceta::all(['id', 'nombre']);
 
