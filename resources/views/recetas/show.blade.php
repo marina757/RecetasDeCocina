@@ -50,6 +50,7 @@
 
     <like-button
         receta-id="{{$receta->id}}"
+        like="{{$like}}"
     ></like-button>
   </div>
 </article>
