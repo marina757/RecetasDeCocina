@@ -124,15 +124,5 @@ class PerfilController extends Controller
         //REDIRECCIONAR
         return redirect()->action('RecetaController@index');
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Perfil  $perfil
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Perfil $perfil)
-    {
-        //
-    }
+    
 }
