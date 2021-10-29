@@ -8,6 +8,11 @@ use Intervention\Image\Facades\Image;
 
 class PerfilController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => 'show']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -59,6 +64,8 @@ class PerfilController extends Controller
      */
     public function edit(Perfil $perfil)
     {
+        //EJECUTAR EL POLICY
+        $this->authorize('view', $perfil);
         //
         return view('perfiles.edit', compact('perfil') );
     }
@@ -72,15 +79,15 @@ class PerfilController extends Controller
      */
     public function update(Request $request, Perfil $perfil)
     {
+        //EJECUTAR EL POLICY
+        $this->authorize('update', $perfil);
+
         // dd( $request['imagen'] );
-
-
         //VALIDAR
         $data = request()->validate( [
             'nombre' => 'required',
             'url' => 'required',
             'biografia' => 'required'
-
         ]);
 
         //SI USUARIO SUBE IMAGEN
@@ -124,5 +131,5 @@ class PerfilController extends Controller
         //REDIRECCIONAR
         return redirect()->action('RecetaController@index');
     }
-    
+
 }

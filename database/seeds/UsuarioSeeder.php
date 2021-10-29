@@ -22,8 +22,6 @@ class UsuarioSeeder extends Seeder
             'url' => 'http://mar_villa.com',
         ]);
 
-        $user->perfil()->create();
-
         $user2 = User::create([
             'name' => 'Pablo',
             'email' => 'correo1@correo.com',
@@ -31,7 +29,7 @@ class UsuarioSeeder extends Seeder
             'url' => 'http://mar_villa.com',
         ]);
 
-        $user2->perfil()->create();
+       
 
         // DB::table('users')->insert([
             
