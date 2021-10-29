@@ -47,10 +47,12 @@
 
         {!! $receta->preparacion !!}{{-- IMPRIME CODIGO HTML--}}
     </div>
-
+{{-- 
+     {{$likes}}  --}}
     <like-button
         receta-id="{{$receta->id}}"
         like="{{$like}}"
+        likes="{{$likes}}"
     ></like-button>
   </div>
 </article>
