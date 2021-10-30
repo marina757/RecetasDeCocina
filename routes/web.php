@@ -14,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'InicioController@index')->name('inicio.index');
 
 //COMO SE HARIA RESOURCE CONTROLLER MODO 1
 // Route::get('/recetas', 'RecetaController@index')->name('recetas.index');

@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class InicioController extends Controller
 {
-    ///cccffffffff
+    public function index()
+    {
+        return view('inicio.index');
+    }
 }
