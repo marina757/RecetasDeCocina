@@ -5,6 +5,24 @@
 @endsection
 
 @section('content')
+
+@section('hero')
+<div class="hero-categorias">
+  <form class="container h-100" action="{{ route('buscar.show')}}">
+    <div class="row h-100 align-items-center">
+      <div class="col-md-4 texto-buscar">
+      <p class="display-4">Encuentra una receta para tu proxima comida</p>
+
+      <input type="search"
+      name="buscar"
+      class="form-control"
+      placeholder="Buscar Receta">
+    </div>
+  </div>
+  </form>
+</div>
+@endsection
+
   <div class="container nuevas-recetas">
     <h2 class="titulo-categoria text-uppercase mb-4">Ultimas Recetas</h2>
 
