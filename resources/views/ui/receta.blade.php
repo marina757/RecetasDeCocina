@@ -16,7 +16,7 @@
           <p>{{ count( $receta->likes ) }} Les gusto</p>
         </div>
 
-        <p>{{ Str::words( strip_tags( $nueva->preparacion ), 20, ' ...') }}</p>
+        <p>{{ Str::words( strip_tags( $receta->preparacion ), 20, ' ...') }}</p>
         <a href="{{ route('recetas.show', ['receta' =>$receta->id ])}}"
           class="btn btn-primary d-block btn-receta"
           >Ver Receta</a>
